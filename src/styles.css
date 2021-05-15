@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #f5f7fb !important;
+}
+
+.table.bank{
+    background: #fff;
+    border: 0.1rem solid #dee2e6;
+    -webkit-box-shadow: 2px 0px 15px 0px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    2px 0px 15px 0px rgba(50, 50, 50, 0.75);
+box-shadow:         2px 0px 15px 0px rgba(50, 50, 50, 0.75);
+}
+.table.bank tbody tr{
+    transition: 0.3s;
+}
+.table.bank tbody tr:hover{
+background-color: #afc5f5 !important;
+}
+.table.bank tbody tr:hover td{
+    color:#f5f7fb !important;
+}
+.table.bank thead tr{
+    background-color: #4780ff !important;
+    color:#f5f7fb !important;
+}
+
+.card.bank .card-body {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card.bank:hover .card-body {
+    opacity: 1;
+}
+

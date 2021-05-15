@@ -1,0 +1,16 @@
+.card {
+    width: 13rem;
+    height: 13rem;
+    margin: .5rem;
+    transition: .3s;    
+}
+.card:hover{
+    background: rgb(208 228 247);
+}
+.card:hover img{
+    width: 7rem;
+}
+.card img{
+    width: 6rem;
+    transition: .3s;
+}

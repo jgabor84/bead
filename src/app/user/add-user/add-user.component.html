@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-md-6">
+
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Felhasználó hozzáadása</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                {{ successMessage }}
+            </div>
+            <form [formGroup]="userForm">
+                <label for="title">id</label>
+                <input type="text" class="form-control" id="firstName" formControlName="cl_number">
+                <label for="description">Név</label>
+                <input type="text" class="form-control" id="lastName" formControlName="cl_name">
+                <label for="price">Cím</label>
+                <input type="text" class="form-control" id="age" formControlName="cl_address">
+                <label for="price">Tel</label>
+                <input type="text" class="form-control" id="age" formControlName="cl_tel">
+                <label for="price">Szigszám</label>
+                <input type="text" class="form-control" id="age" formControlName="cl_uid">
+                <button class="btn btn-primary mt-2" (click)="saveUser()">Save user</button>
+            </form>
+
+            </div>
+            
+          </ng-template>
+          
+          <button class="btn btn-outline-primary" (click)="open(content)"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+            <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+            <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"></path>
+          </svg> Új felhasználó</button>
+          
+     
+          
+          
+
+
+
+
+   
+    </div>
+</div>

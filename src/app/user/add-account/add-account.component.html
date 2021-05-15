@@ -1,0 +1,37 @@
+
+<button class="btn btn-outline-primary" (click)="open(content)">Új számla</button>
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Számla hozzáadása</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                {{ successMessage }}
+            </div>
+            <form [formGroup]="accForm">
+                <label for="title">Nyitóegyenleg</label>
+                <input type="text" class="form-control" id="balance" formControlName="acc_balance">
+                
+                <button class="btn btn-primary mt-2" (click)="addAccount()">Létrehozás</button>
+            </form>
+
+            </div>
+            
+          </ng-template>
+          
+          
+          
+    
+          
+          
+
+
+
+
+   

@@ -1,0 +1,16 @@
+<button class="btn btn-danger" (click)="deleteUser(clnumber, content)" >Törlés</button>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Törlés</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p>Biztosan törli?</p>
+      <button class="btn btn-primary mt-2" (click)="delUser()">Törlés</button>
+      <button class="btn btn-danger mt-2" (click)="modal.dismiss('Cross click')">Mégse</button>
+    </div>
+    
+  </ng-template>

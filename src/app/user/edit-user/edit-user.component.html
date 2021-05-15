@@ -1,0 +1,28 @@
+<button class="btn btn-success" (click)="editUser(clnumber, content)" >Módosítás</button>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Adatok módosítása</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+ 
+    <form [formGroup]="userForm">
+        <label for="title">id</label>
+        <input type="text" class="form-control" id="clnumber" formControlName="cl_number">
+        <label for="description">Név</label>
+        <input type="text" class="form-control" id="clname" formControlName="cl_name">
+        <label for="price">Cím</label>
+        <input type="text" class="form-control" id="claddress" formControlName="cl_address">
+        <label for="price">Tel</label>
+        <input type="text" class="form-control" id="cltel" formControlName="cl_tel">
+        <label for="price">Szigszám</label>
+        <input type="text" class="form-control" id="cluid" formControlName="cl_uid">
+<button class="btn btn-primary mt-2" (click)="updateUser()">Mentés</button>
+    </form>
+
+    </div>
+    
+  </ng-template>

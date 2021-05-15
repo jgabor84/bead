@@ -1,0 +1,58 @@
+
+    
+
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Átutalás</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                {{ successMessage }}
+            </div>
+            <form [formGroup]="accForm">
+                <label for="title">Összeg</label>
+                <input type="text" class="form-control" id="amount" formControlName="tr_amount">
+                <label for="title">Forrásszámla</label>
+                
+                <input id="typeahead-basic" type="text" class="form-control" 
+                [(ngModel)]="acc1"
+                [ngModelOptions]="{standalone: true}" 
+                [inputFormatter]="formatter"
+                [resultFormatter]="resFormatter"
+                [ngbTypeahead]="search"/>
+
+                <label for="title">Célszámla</label>
+                
+                <input id="typeahead-basic" type="text" class="form-control" 
+                [(ngModel)]="acc2"
+                [ngModelOptions]="{standalone: true}" 
+                [inputFormatter]="formatter"
+                [resultFormatter]="resFormatter"
+                [ngbTypeahead]="search"/>
+                
+                
+                <button class="btn btn-primary mt-2" (click)="addTransaction(acc1.acc_number, acc2.acc_number)">Létrehozás</button>
+                
+            </form>
+
+            </div>
+            
+          </ng-template>
+          
+          <button class="btn btn-primary" (click)="open(content)">Átutalás</button>
+          
+          
+          
+          
+
+
+
+
+   
+    
