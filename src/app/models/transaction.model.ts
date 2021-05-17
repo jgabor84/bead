@@ -3,6 +3,6 @@ export interface Transaction {
     tr_opp_acc: string;
     tr_amount: number;
     tr_comment: string;
-    tr_date: string;
+    tr_date: Date;
     
     }

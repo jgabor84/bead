@@ -1,4 +1,4 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryColumn, OneToMany, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
 import { Account } from './Account';
 
@@ -16,8 +16,8 @@ export class Transaction {
     @Column()
     tr_comment: string;
 
-    @Column()
-    tr_date: string;
+    @CreateDateColumn()
+    tr_date: Date;
 
     @ManyToOne(type => Account, {
         eager: true,
