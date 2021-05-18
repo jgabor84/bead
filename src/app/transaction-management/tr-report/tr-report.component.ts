@@ -20,6 +20,7 @@ export class TrReportComponent implements OnInit {
   allTrans!: Transactions[];
   chartData: number[] = [];
   chartLabel: string[] = [];
+  chartColors: string[] = [];
   filter = new FormControl('');
 
   public lineChartData: ChartDataSets[] = [
@@ -30,7 +31,7 @@ export class TrReportComponent implements OnInit {
   public lineChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
+      backgroundColor: this.chartColors,
     },
   ];
   public lineChartLegend = true;
@@ -47,6 +48,7 @@ export class TrReportComponent implements OnInit {
       this.allTrans = data;
       data.forEach((x) => this.chartData.push(x.tr_amount));
       data.forEach((x) => this.chartLabel.push(x.tr_date.toString()));
+      data.forEach((x) => this.chartColors.push( x.tr_amount < 0 ? '#ff0000c9':'#008000c2'));
     });
   }
 

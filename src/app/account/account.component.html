@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row mt-4 justify-content-center">
-    <div class="col-md-10">
+    <div class="col-md-6">
     <table class="table bank">
       <thead>
       <tr>
@@ -36,5 +36,20 @@
       </tbody>
     </table>
   </div>
+  <div class="col-md-6">
+    <div class="chart-wrapper">
+      <canvas baseChart 
+          [datasets]="lineChartData" 
+          [labels]="lineChartLabels" 
+          [colors]="lineChartColors" 
+          [legend]="lineChartLegend" 
+          [chartType]="'doughnut'"
+          [plugins]="lineChartPlugins">
+      </canvas>
+    </div>
+
+  </div>
+
 </div>
+
 </div>

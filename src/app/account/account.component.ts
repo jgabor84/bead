@@ -7,6 +7,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Account } from '../models/account.model';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { ChartDataSets, ChartOptions } from 'chart.js';
+import { Color, Label } from 'ng2-charts';
 
 @Component({
   selector: 'app-account',
@@ -16,6 +18,26 @@ import { map, startWith } from 'rxjs/operators';
 export class AccountComponent implements OnInit {
 
   accounts: Account[];
+
+  chartData: number[] = [];
+  chartLabel: string[] = [];
+  chartColors: string[] = [];
+
+  public lineChartData: ChartDataSets[] = [
+    { data: this.chartData, label: 'Számlák egyenlege' },
+  ];
+  public lineChartLabels: Label[] = this.chartLabel;
+  public lineChartColors: any[] = 
+  [
+      {
+          backgroundColor: this.chartColors,
+          borderColor: 'rgba(106,185,236,1)'
+      }
+  ]
+
+  public lineChartLegend = true;
+  public lineChartType = "'doughnut'";
+  public lineChartPlugins = [];
 
   constructor(
     private accountService: AccountService, 
@@ -30,6 +52,9 @@ export class AccountComponent implements OnInit {
        
        this.accounts = data;
       // this.allUsers = this.users;
+      data.forEach((x) => this.chartData.push(x.acc_balance));
+      data.forEach((x) => this.chartLabel.push(x.acc_number));
+      data.forEach((x) => this.chartColors.push("#"+Math.floor(Math.random()*16777215).toString(16)));
        
      });
        
