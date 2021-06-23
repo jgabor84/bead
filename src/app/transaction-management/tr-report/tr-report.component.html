@@ -1,89 +1,117 @@
-
-
 <div class="container">
-    <div class="row mt-4 justify-content-center">
+  <div class="row mt-4 justify-content-center">
     <div class="col-md12 text-center">
       <h2 style="margin: auto">Tranzakció riportok</h2>
-  
     </div>
   </div>
-    <div class="row mt-4 justify-content-center">
-  <div class="col-md-5">
-      
-    <form>
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-5">
+      <form>
         <div class="form-group">
-            <input class="form-control ml-2" placeholder="Számlaszám/összeg/név" type="text" [formControl]="filter" (input)="search($any($event.target).value)"/>
+          <input
+            class="form-control ml-2"
+            placeholder="Számlaszám/összeg/név"
+            type="text"
+            [formControl]="filter"
+            (input)="search($any($event.target).value)"
+          />
         </div>
       </form>
     </div>
- 
   </div>
-  
-  
-    <div class="row mt-4 justify-content-center">
+
+  <div class="row mt-4 justify-content-center">
     <div class="col-md-10">
       <table class="table bank">
         <thead>
-        <tr>
-         
-          <th scope="col">Esemény</th>  
-          <th scope="col">Honnan</th>
-          <th></th>
-          <th scope="col">Hová</th>
-          <th scope="col">Mikor</th>
-          <th scope="col">Összeg</th>
-          <th scope="col">Megjegyzés</th>
-    
-        </tr>
+          <tr>
+            <th scope="col">Esemény</th>
+            <th scope="col">Honnan</th>
+            <th></th>
+            <th scope="col">Hová</th>
+            <th scope="col">Mikor</th>
+            <th scope="col">Összeg</th>
+            <th scope="col">Megjegyzés</th>
+          </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let transaction of transactions ">
-            <td  *ngIf="transaction.tr_opp_acc=='Pénztár' || transaction.account.acc_number=='Pénztár';else transfer">
-                <img class="table-icon" src="../../../assets/icons/cash-coin.svg" >
+          <tr *ngFor="let transaction of transactions">
+            <td
+              *ngIf="
+                transaction.tr_opp_acc == 'Pénztár' ||
+                  transaction.account.acc_number == 'Pénztár';
+                else transfer
+              "
+            >
+              <img
+                class="table-icon"
+                src="../../../assets/icons/cash-coin.svg"
+              />
             </td>
             <ng-template #transfer>
-                <td><img class="table-icon" src="../../../assets/icons/credit-card-2-back-fill.svg" ></td>
+              <td>
+                <img
+                  class="table-icon"
+                  src="../../../assets/icons/credit-card-2-back-fill.svg"
+                />
+              </td>
             </ng-template>
-           
-            
-            <td> 
-                <ngb-highlight [result]="transaction.account.acc_number" [term]="filter.value"></ngb-highlight>
-            </td>
-            <td><img class="table-icon" src="../../../assets/icons/arrow-right-square-fill.svg" ></td>
-            
-            <td>
-                <ngb-highlight [result]="transaction.tr_opp_acc" [term]="filter.value"></ngb-highlight>
-            </td>
-            <td>dátum</td>
-           
-           
-            <td> <ngb-highlight [result]="transaction.tr_amount.toString()" [term]="filter.value"></ngb-highlight></td>
-          
-          
-          <td> <ngb-highlight [result]="transaction.tr_comment" [term]="filter.value"></ngb-highlight></td>
 
-       
-          
-       
-         
-         
- 
-        </tr>
+            <td>
+              <ngb-highlight
+                [result]="transaction.account.acc_number"
+                [term]="filter.value"
+              ></ngb-highlight>
+            </td>
+            <td>
+              <img
+                class="table-icon"
+                src="../../../assets/icons/arrow-right-square-fill.svg"
+              />
+            </td>
+
+            <td>
+              <ngb-highlight
+                [result]="transaction.tr_opp_acc"
+                [term]="filter.value"
+              ></ngb-highlight>
+            </td>
+            <td>
+              <ngb-highlight
+                [result]="transaction.tr_date.toString()"
+                [term]="filter.value"
+              ></ngb-highlight>
+            </td>
+
+            <td>
+              <ngb-highlight
+                [result]="transaction.tr_amount.toString()"
+                [term]="filter.value"
+              ></ngb-highlight>
+            </td>
+
+            <td>
+              <ngb-highlight
+                [result]="transaction.tr_comment"
+                [term]="filter.value"
+              ></ngb-highlight>
+            </td>
+          </tr>
         </tbody>
       </table>
 
-
       <div class="chart-wrapper">
-        <canvas baseChart 
-            [datasets]="lineChartData" 
-            [labels]="lineChartLabels" 
-            [colors]="lineChartColors" 
-            [legend]="lineChartLegend" 
-            [chartType]="'bar'"
-            [plugins]="lineChartPlugins">
+        <canvas
+          baseChart
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="'bar'"
+          [plugins]="lineChartPlugins"
+        >
         </canvas>
-    </div>
+      </div>
     </div>
   </div>
-  </div>
-  
+</div>

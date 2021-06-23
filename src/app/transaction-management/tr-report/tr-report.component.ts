@@ -44,25 +44,25 @@ export class TrReportComponent implements OnInit {
     private transactionService: TransactionService,
     pipe: DecimalPipe
   ) {
-    this.transactionService.getTransactions().then((data: Transactions[]) => {
-      this.allTrans = data;
-      data.forEach((x) => this.chartData.push(x.tr_amount));
-      data.forEach((x) => this.chartLabel.push(x.tr_date.toString()));
-      data.forEach((x) => this.chartColors.push( x.tr_amount < 0 ? '#ff0000c9':'#008000c2'));
-    });
+    
   }
 
   search(value: string): void {
-    this.transactions = this.allTrans.filter(
+    this.transactions, this.allTrans = this.allTrans.filter(
       (val) =>
         val.tr_amount.toString().toLowerCase().includes(value) ||
         val.tr_comment.toLowerCase().includes(value) ||
         val.account.acc_number.toString().toLowerCase().includes(value) ||
-        val.tr_opp_acc.toString().toLowerCase().includes(value)
+        val.tr_opp_acc.toString().toLowerCase().includes(value) ||
+        val.tr_date.toString().toLowerCase().includes(value)
     );
   }
 
   async ngOnInit(): Promise<void> {
+
+
+
+
     try {
       const accId = this.activatedRoute.snapshot.params.id;
       if (accId) {
@@ -71,6 +71,9 @@ export class TrReportComponent implements OnInit {
           .then((data: Transactions[]) => {
             this.transactions = data;
             this.allTrans = this.transactions;
+            data.forEach((x) => this.chartData.push(x.tr_amount));
+      data.forEach((x) => this.chartLabel.push(x.tr_date.toString()));
+      data.forEach((x) => this.chartColors.push( x.tr_amount < 0 ? '#ff0000c9':'#008000c2'));
           });
       } else {
         await this.transactionService
@@ -78,10 +81,13 @@ export class TrReportComponent implements OnInit {
           .then((data: Transactions[]) => {
             this.transactions = data;
             this.allTrans = this.transactions;
+            data.forEach((x) => this.chartData.push(x.tr_amount));
+      data.forEach((x) => this.chartLabel.push(x.tr_date.toString()));
+      data.forEach((x) => this.chartColors.push( x.tr_amount < 0 ? '#ff0000c9':'#008000c2'));
           });
       }
 
-      console.log('transactions oninit: ', this.transactions);
+      
     } catch (err) {
       console.error(err);
     }

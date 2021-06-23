@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Banki ügyintézés';
+  
 }
+setInterval( ()=>{console.log('123')},5000);

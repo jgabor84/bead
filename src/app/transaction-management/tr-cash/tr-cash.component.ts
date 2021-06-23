@@ -93,13 +93,15 @@ export class TrCashComponent implements OnInit {
       this.errorMessage = '';
       transaction.account = this.accNumber;
       transaction.tr_opp_acc = 'Pénztár';
+      console.log("kifizetés: ",transaction);
       await this.transactionService.addTransaction(transaction);
       await this.accountService.updateBalance(account);
     } else {
-      this.successMessage = 'Rendben';
+      this.successMessage = 'Rendben befizetés';
       this.errorMessage = '';
       transaction.account = 'Pénztár';
-      transaction.tr_opp_acc = this.accNumber;
+      transaction.tr_opp_acc = this.accNumber.acc_number;
+      console.log("befizetés: ",transaction);
       await this.transactionService.addTransaction(transaction);
       await this.accountService.updateBalance(account);
     }
