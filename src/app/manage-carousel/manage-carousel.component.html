@@ -1,0 +1,35 @@
+<div class="col-md-6">
+    <div class="card card-container">
+     
+      <div *ngIf="filename">
+      <img src="http://localhost:3000/{{filename}}">
+    </div>
+    <p>Kép feltöltése</p>
+    <div class="file-upload">
+        <input type="file" name="image" ng2FileSelect [uploader]="uploader" (change)="onFileSelected()" accept="image/x-png,image/gif,image/jpeg" />
+  
+      </div>
+      <form name="form" #f="ngForm" [formGroup]="carouselForm" (ngSubmit)="onSubmit()" novalidate>
+       
+          <label for="name">Carousel szövege</label>
+          <input type="text" class="form-control" formControlName="text"  required  />
+       
+            <label for="winery">Link</label>
+            <input type="text" class="form-control" formControlName="link"  required  />
+          
+       
+          <button class="btn btn-primary btn-block">Carousel mentése</button>
+        
+  
+        <!--<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>-->
+      </form>
+ 
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Mentés sikeres!
+      </div>
+    </div>
+  </div>
+

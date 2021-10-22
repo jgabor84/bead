@@ -1,8 +1,15 @@
 export interface User {
-    cl_number: number;
-    cl_name: string;
-    cl_address: string;
-    cl_tel: string;
-    cl_uid: string;
+    id: number;
+    firstName: string;
+    middleName: string;
+    lastName: string;
+    username:string;
+    password:string;
+    email:string;
+    
+    tel: string;
+    postcode: string;
+    city: string;
+    address: string;
     cl_status: boolean;
 }

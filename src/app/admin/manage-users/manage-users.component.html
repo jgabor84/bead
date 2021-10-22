@@ -1,0 +1,14 @@
+<ng-select [items]="users" [(ngModel)]="selectedUser" bindLabel="username" bindValue="username">
+    <ng-template ng-label-tmp let-item="item">
+                
+        {{item.cl_number}} | {{item.username}} | {{item.cl_address}} 
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item">
+        
+            <div class="d-flex">
+           {{item.cl_number}} | {{item.username}} | {{item.cl_address}} |{{item.role}}
+            <div> <button class="btn btn-primary btn-block" (click)="delUser(item.cl_number)">Töröl</button></div>
+            <div> <button class="btn btn-primary btn-block" (click)="setAdmin(item.cl_number)">Admin</button></div>
+        </div>
+    </ng-template>
+</ng-select>

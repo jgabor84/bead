@@ -1,0 +1,94 @@
+<p>list-review works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Szín
+
+            </td>
+            <td>Szín megjegyzés
+                
+            </td>
+            <td>Illat
+                
+            </td>
+            <td>Illat karakter
+                
+            </td>
+            <td>Illat megjegyzés
+                
+            </td>
+            <td>Édesség
+                
+            </td>
+            <td>Savasság
+                
+            </td>
+            <td>Alkoholtatalom
+                
+            </td>
+            <td>Tannin mennyiég
+                
+            </td>
+            <td>Tannin minőség
+                
+            </td>
+            <td>Testesség
+                
+            </td>
+            <td>Íz karakter
+                
+            </td>
+            <td>Lecsengés
+                
+            </td>
+            <td>Íz megjegyzés
+                
+            </td>
+            <td>Pontszám
+                
+            </td>
+            <td>Dátum
+                
+            </td>
+        </tr>
+    </thead>
+<tbody>
+    <tr *ngFor="let review of reviews;index as i">
+        <td>{{review.color}}</td>
+        <td>{{review.color_comment}}</td>
+        <td>{{review.intensity}}</td>
+        <td>{{review.nose_character}}</td>
+        <td>{{review.nose_comment}}</td>
+        <td>{{review.sweetness}}</td>
+        <td>{{review.acidity}}</td>
+        <td>{{review.alc_content}}</td>
+        <td>{{review.tannin_quantity}}</td>
+        <td>{{review.tannin_quality}}</td>
+        <td>{{review.body}}</td>
+        <td>{{review.taste_character}}</td>
+        <td>{{review.length}}</td>
+        <td>{{review.taste_comment}}</td>
+        <td>{{review.rating}}</td>
+        <td>{{review.createTime}}</td>
+    </tr>
+</tbody>
+</table>
+<div class="container">
+    <div class="d-flex flex-nowrap">
+        
+           
+    <div class="card text-center w-25 p-3 ml-1 mr-1 mt-1 mb-1" *ngFor="let review of reviews;index as i">
+        <div class="card-body">
+            <h6 class="card-subtitle">Szín</h6>
+            <div [ngStyle]="{'width':'100px','height':'100px','background':review.color}"></div>
+            <p class="card-text">{{review.color_comment}}</p>
+            <h6 class="card-subtitle">Illat</h6>
+            <ul class="list-group">
+                <li class="list-group-item">Intenzitás (1-5): {{review.intensity}}</li>
+                <li class="list-group-item">Karakter: {{review.nose_character}}</li>
+            </ul>
+            <h6 class="card-subtitle">Íz</h6>
+        </div>
+</div>
+</div>
+</div>

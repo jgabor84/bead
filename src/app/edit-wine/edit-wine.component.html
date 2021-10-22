@@ -1,0 +1,99 @@
+
+<div class="container">
+  <div class="row mt-4 justify-content-center">
+<div class="col-md-6">
+    <div class="card card-container">
+      <div *ngIf="filename">
+        <img src="http://localhost:3000/{{filename}}">
+      </div>
+      
+      <p>Kép feltöltése</p>
+      <div class="file-upload">
+          <input type="file" name="image" ng2FileSelect [uploader]="uploader" (change)="onFileSelected()" accept="image/x-png,image/gif,image/jpeg" />
+    
+        </div>
+      <form name="form" #f="ngForm" [formGroup]="wineForm" (ngSubmit)="editWine()" novalidate>
+        <label for="name">ID</label>
+        <input type="text" class="form-control" formControlName="id"  required  />
+       
+          <label for="name">Bor neve</label>
+          <input type="text" class="form-control" formControlName="name"  required  />
+       
+
+       
+            <label for="winery">Borászat</label>
+            <input type="text" class="form-control" formControlName="winery" required  />
+          
+
+         
+            <label for="name">Leírás</label>
+            <input type="text" class="form-control" formControlName="description"  required  />
+          
+
+         
+            <label for="name">Típus</label>
+            <input type="text" class="form-control" formControlName="type"  required  />
+          
+
+         
+            <label for="name">Évjárat</label>
+            <input type="text" class="form-control" formControlName="year"  required  />
+         
+
+         
+            <label for="name">Alkoholtartalom</label>
+            <input type="text" class="form-control" formControlName="alcohol"  required  />
+         
+
+         
+            <label for="name">Szín</label>
+            <input type="text" class="form-control" formControlName="color"  required  />
+         
+
+         
+            <label for="name">Cikkszám</label>
+            <input type="text" class="form-control" formControlName="sku"  required />
+          
+
+         
+            <label for="name">Ár</label>
+            <input type="text" class="form-control" formControlName="price"  required  />
+          
+
+         
+            <label for="name">Kedvezmény</label>
+            <input type="text" class="form-control" formControlName="discount"  required  />
+          
+
+         
+            <label for="name">Mennyiség</label>
+            <input type="text" class="form-control" formControlName="quantity"  required  />
+         
+            <label for="name">Elérhető</label>
+            
+            <input type="checkbox" formControlName="shop" >
+            <div>
+            <label for="name">Főoldalra</label>
+            <input type="checkbox" formControlName="landing" ></div>
+        <div>
+            <label for="name">create time</label>
+            <input type="text" class="form-control" formControlName="createTime"  required  />
+          </div>
+            <label for="name">update time</label>
+            <input type="text" class="form-control" formControlName="updateTime"  required  />
+       
+          <button class="btn btn-primary btn-block">Bor mentése</button>
+        
+  
+        <!--<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>-->
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Mentés sikeres!
+      </div>
+    </div>
+  </div>
+</div>
+</div>

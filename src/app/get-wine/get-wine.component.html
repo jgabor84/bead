@@ -1,0 +1,28 @@
+
+<div class="container">
+<div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4 text-center">
+      <img class="img-fluid" src="http://localhost:3000/{{wine.imgs}}" >
+  
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{wine.winery}}, {{wine.name}}, {{wine.year}}, </h5>
+          <p>{{wine.description}}</p>
+  <p>{{wine.type}}</p>
+  <p>{{wine.color}}</p>
+  <p>{{wine.alcohol}}</p>
+  <div class="row my-3">
+  <button class="btn btn-primary btn-lg" *ngIf="isLoggedIn" [routerLink]="['/add-review', wine.id]">Értékelés</button>
+</div>
+<div class="row my-3">
+  <button class="btn btn-primary btn-lg" *ngIf="isLoggedIn" [routerLink]="['/add-review', wine.id]">Kosárba</button>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3>Értékelések:</h3>
+<app-list-review></app-list-review>

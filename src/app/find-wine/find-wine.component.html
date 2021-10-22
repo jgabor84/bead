@@ -1,0 +1,12 @@
+<ng-select [items]="wines" [(ngModel)]="selectedWine" bindLabel="name" bindValue="name">
+    <ng-template ng-label-tmp let-item="item">
+        <a class="nav-link" routerLink="/wine/{{item.id}}" >
+        <img  width="50" src="http://localhost:3000/{{item.imgs}}"/>
+        {{item.name}} | {{item.year}} | {{item.sku}}</a>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item">
+        <a class="nav-link" routerLink="/wine/{{item.id}}" >
+            <img  width="50" src="http://localhost:3000/{{item.imgs}}"/>
+            {{item.name}} | {{item.year}} | {{item.sku}}</a>
+    </ng-template>
+</ng-select>

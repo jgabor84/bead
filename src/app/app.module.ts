@@ -24,6 +24,43 @@ import { TrCashComponent } from './transaction-management/tr-cash/tr-cash.compon
 import { TrTransferComponent } from './transaction-management/tr-transfer/tr-transfer.component';
 import { TrReportComponent } from './transaction-management/tr-report/tr-report.component';
 import { HomeComponent } from './home/home.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { LoginComponent } from './login/login.component';
+
+import { authInterceptorProviders } from './helper/auth.interceptor';
+import { RegisterComponent } from './register/register.component';
+import { AddWineComponent } from './add-wine/add-wine.component';
+import { ListWineComponent } from './list-wine/list-wine.component';
+import { AddReviewComponent } from './add-review/add-review.component';
+import { ListReviewComponent } from './list-review/list-review.component';
+
+import { CartComponent } from './cart/cart.component';
+import { AddCartComponent } from './add-cart/add-cart.component';
+import { EditWineComponent } from './edit-wine/edit-wine.component';
+
+import { NgxBootstrapSliderModule } from 'ngx-bootstrap-slider';
+import { GetWineComponent } from './get-wine/get-wine.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
+import { FileUploadModule  } from 'ng2-file-upload';
+import { LandingComponent } from './landing/landing.component';
+import { FindWineComponent } from './find-wine/find-wine.component';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { ManageCarouselComponent } from './manage-carousel/manage-carousel.component';
+import { EditCarouselComponent } from './edit-carousel/edit-carousel.component';
+import { EditCarouselItemComponent } from './edit-carousel-item/edit-carousel-item.component';
+
+import { NgDragDropModule } from 'ng-drag-drop';
+import { WineTopRatingComponent } from './wine-top-rating/wine-top-rating.component';
+import { DragulaModule } from 'ng2-dragula';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+
+import { GuardService } from './services/guard.service';
+import { WineDiscountComponent } from './wine-discount/wine-discount.component';
 
 
 @NgModule({
@@ -42,7 +79,31 @@ import { HomeComponent } from './home/home.component';
     TrCashComponent,
     TrTransferComponent,
     TrReportComponent,
-    HomeComponent
+    HomeComponent,
+    BoardAdminComponent,
+    LoginComponent,
+    RegisterComponent,
+    AddWineComponent,
+    ListWineComponent,
+    AddReviewComponent,
+    ListReviewComponent,
+
+    CartComponent,
+    AddCartComponent,
+    EditWineComponent,
+    GetWineComponent,
+    LandingComponent,
+    FindWineComponent,
+    ManageCarouselComponent,
+    EditCarouselComponent,
+    EditCarouselItemComponent,
+    WineTopRatingComponent,
+    ManageUsersComponent,
+    EditProfileComponent,
+    WineDiscountComponent
+
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -51,10 +112,17 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    ChartsModule
+    NgxBootstrapSliderModule,
+    ChartsModule,
+    NgSelectModule,
+    BrowserAnimationsModule, 
+    ToastrModule.forRoot(),
+    FileUploadModule,
+   // NgDragDropModule.forRoot(),
+   DragulaModule.forRoot()
     
   ],
-  providers: [],
+  providers: [authInterceptorProviders,GuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

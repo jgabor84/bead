@@ -1,0 +1,25 @@
+<div class="cart" [ngClass]="{'open' : isOpen}">
+    <h2>Kosár</h2>
+    <div class="cart-row d-flex flex-row" *ngFor="let list of cartProducts;index as i">
+      <div class="cart-img mx-2 my-2">
+        <img style="width:100px;" src="http://localhost:3000/{{list.wine.imgs}}" >
+      </div>
+      <div class="cart-body mx-2 my-2">
+        <p>{{list.wine.name}}</p>
+        <p><strong>{{list.price}} Ft</strong></p>
+      </div>
+      <div class="cart-action mx-2 my-2">
+        <button class="btn btn-danger" (click)="deleteProduct(list.id)">Törlés</button>
+      </div>
+    </div>
+    <div class="d-flex flex-row">
+      <div style="width:150px;"></div>
+
+      <div class="mx-2 my-2"><p><strong>{{totalQuantity}} Darab</strong></p><p><strong>Összesen: {{totalPrice | currency: 'Ft' }}</strong></p></div>
+      <div class="mx-2 my-2"> <button *ngIf="isLoggedIn" class="btn btn-danger" (click)="saveCart()">Rendelés</button></div>
+       
+    </div>
+    
+  </div>
+  
+  

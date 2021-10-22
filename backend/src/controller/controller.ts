@@ -35,6 +35,7 @@ export abstract class Controller {
     create = async (req, res) => {
         // OPTIONAL TASK: check if entity with the given id is exists
         try {
+            console.log(JSON.stringify(req.body));
             const entity = this.repository.create(req.body);
             const entityAdded = await this.repository.save(entity);
             res.json(entityAdded);
@@ -46,8 +47,9 @@ export abstract class Controller {
 
     // OPTIONAL TASK: check if the given id is valid
     update = async (req, res) => {
-        const id = req.body.cl_number;
+        const id = req.body.id;
         const body = req.body;
+        console.log("json: "+JSON.stringify(req.body));
 
         try {
             await this.repository.update(id, body);

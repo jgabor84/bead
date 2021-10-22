@@ -1,0 +1,83 @@
+<div class="col-md-6">
+    <div class="card card-container">
+     
+      <div *ngIf="filename">
+      <img src="http://localhost:3000/{{filename}}">
+    </div>
+      <form name="form" #f="ngForm" [formGroup]="wineForm" (ngSubmit)="onSubmit()" novalidate>
+       
+          <label for="name">Bor neve</label>
+          <input type="text" class="form-control" formControlName="name" [(ngModel)]="form.name" required  />
+       
+
+       
+            <label for="winery">Borászat</label>
+            <input type="text" class="form-control" formControlName="winery" [(ngModel)]="form.winery" required  />
+          
+
+         
+            <label for="name">Leírás</label>
+            <input type="text" class="form-control" formControlName="description" [(ngModel)]="form.description" required  />
+          
+
+         
+            <label for="name">Típus</label>
+            <input type="text" class="form-control" formControlName="type" [(ngModel)]="form.type" required  />
+          
+
+         
+            <label for="name">Évjárat</label>
+            <input type="text" class="form-control" formControlName="year" [(ngModel)]="form.year" required  />
+         
+
+         
+            <label for="name">Alkoholtartalom</label>
+            <input type="text" class="form-control" formControlName="alcohol" [(ngModel)]="form.alcohol" required  />
+         
+
+         
+            <label for="name">Szín</label>
+            <input type="text" class="form-control" formControlName="color" [(ngModel)]="form.color" required  />
+         
+
+         
+            <label for="name">Cikkszám</label>
+            <input type="text" class="form-control" formControlName="sku" [(ngModel)]="form.sku" required />
+          
+
+         
+            <label for="name">Ár</label>
+            <input type="text" class="form-control" formControlName="price" [(ngModel)]="form.price" required  />
+          
+
+         
+            <label for="name">Kedvezmény</label>
+            <input type="text" class="form-control" formControlName="discount" [(ngModel)]="form.discount" required  />
+          
+
+         
+            <label for="name">Mennyiség</label>
+            <input type="text" class="form-control" formControlName="quantity" [(ngModel)]="form.quantity" required  />
+         
+        
+        
+       
+          <button class="btn btn-primary btn-block">Bor mentése</button>
+        
+  
+        <!--<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>-->
+      </form>
+      <div class="file-upload">
+        <input type="file" name="image" ng2FileSelect [uploader]="uploader" accept="image/x-png,image/gif,image/jpeg" />
+        <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+          Upload
+        </button>
+      </div>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Mentés sikeres!
+      </div>
+    </div>
+  </div>

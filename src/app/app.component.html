@@ -1,28 +1,54 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary bank">
+<nav class="navbar navbar-expand-lg navbar-light bg-white bank">
     <div class="container-fluid">
         <div class="row mt-2 justify-content-center">
-      <a class="navbar-brand" href="/home">Bank</a>
+      <a class="navbar-brand" href="/home">Winez</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/home">Kezdőlap</a>
+            <a class="nav-link active" aria-current="page" routerLink="/landing">Kezdőlap</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/users" >Felhasználókezelés</a>
+            <a class="nav-link" routerLink="/wines" >Borok</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/transactions" >Tranzakciók</a>
+            <a class="nav-link" routerLink="/sale" >Akciók <i class="bi bi-currency-exchange"></i></a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/wines" >Újdonságok <i class="bi bi-patch-exclamation-fill"></i></a>
+          </li>
+
    
           
         </ul>
 
       </div>
     </div>
+  <div>
+
+    <div ngbDropdown class="d-inline-block">
+      <div *ngIf="isLoggedIn; else loggedOut">
+      <button class="btn btn-outline-dark mx-2" id="dropdownUser" ngbDropdownToggle><i class="bi bi-person"></i>Profil</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownUser">
+        <button routerLink="/edit-profile/{{userId}}" ngbDropdownItem>Saját adatok</button>
+        <button ngbDropdownItem>Rendelések</button>
+        
+      </div>
+    </div>
+    <ng-template #loggedOut>
+      <a class="btn btn-outline-dark mx-2" routerLink="/login" ><i class="bi bi-lock"></i>Bejelentkezés</a>
+    </ng-template>
+    </div>
+
+
+    <button type="button" (click)="openCart()" class="btn btn-outline-dark mx-2">
+      <i class="bi bi-cart"></i> Kosár
+    </button>
+  </div>
 </div>
   </nav>
-
+  <app-cart [isOpen]="cartIsOpen"></app-cart>
 <router-outlet></router-outlet>
+

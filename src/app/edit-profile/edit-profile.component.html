@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="text-center">
+    <h3>Profil szerkesztése</h3>
+    <h4>{{user.username}}</h4>
+    <h6>{{user.email}}</h6>
+</div>
+<form [formGroup]="userForm">
+    
+    <label for="firstname">Vezetéknév</label>
+    <input type="text" class="form-control" id="firstname" formControlName="firstName">
+
+    <label for="middlename">Középs név</label>
+    <input type="text" class="form-control" id="middlename" formControlName="middleName">
+
+    <label for="lastname">Keresztnév</label>
+    <input type="text" class="form-control" id="lastname" formControlName="lastName">
+
+    <label for="tel">Telefon</label>
+    <input type="text" class="form-control" id="tel" formControlName="tel">
+
+    <label for="postcode">Irányítószám</label>
+    <input type="text" class="form-control" id="postcode" formControlName="postcode">
+
+    <label for="city">Város</label>
+    <input type="text" class="form-control" id="city" formControlName="city">
+
+    <label for="address">Cím</label>
+    <input type="text" class="form-control" id="address" formControlName="address">
+
+<button class="btn btn-primary mt-2" (click)="updateUser()">Mentés</button>
+</form>
+</div>

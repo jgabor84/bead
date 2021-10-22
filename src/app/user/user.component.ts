@@ -53,7 +53,8 @@ export class UserComponent implements OnInit {
     });
   }*/
   search(value: string): void {
-    this.users = this.allUsers.filter((val) => val.cl_name.toLowerCase().includes(value));
+    this.users = this.allUsers.filter((val) => val.id.toString().includes(value) || 
+    val.username.toLocaleLowerCase().includes(value));
     
   }
 

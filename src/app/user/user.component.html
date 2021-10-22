@@ -29,22 +29,24 @@
     <table class="table bank">
       <thead>
       <tr>
-        <th scope="col" sortable="cl_number">Ügyfélszám</th>
-        <th scope="col" sortable="cl_name">Név</th>
+        <th scope="col" sortable="id">ID</th>
+        <th scope="col" sortable="username">Felhasználónév</th>
+        <th scope="col">Név</th>
         <th scope="col">Cím</th>
         <th scope="col">Telefon</th>
-        <th scope="col">Szigszám</th>
+        <th scope="col">E-mail</th>
         <th scope="col">Státusz</th>
         <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let user of users" [ngClass]="{'client-inactive': user.cl_status == false}">
-        <td>{{user.cl_number}}</td>
-        <td>{{user.cl_name}}</td>
-        <td>{{user.cl_address}}</td>
-        <td>{{user.cl_tel}}</td>
-        <td>{{user.cl_uid}}</td>
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.firstName}} {{user.middleName}} {{user.lastName}}</td>
+        <td>{{user.postcode}}, {{user.city}}, {{user.address}}</td>
+        <td>{{user.tel}}</td>
+        <td>{{user.email}}</td>
         <td *ngIf="user.cl_status == true">Aktív</td>
         <td *ngIf="user.cl_status == false">Törölt</td>
         
@@ -52,10 +54,8 @@
         
         <td> 
 
-          <app-delete-user *ngIf="user.cl_status==true" [clnumber]=user.cl_number></app-delete-user>
-          <app-edit-user *ngIf="user.cl_status==true" [clnumber]=user.cl_number></app-edit-user>
-        <app-add-account *ngIf="user.cl_status==true" [clnumber]=user.cl_number></app-add-account>
-        <a class="btn btn-outline-warning" href="/client-accounts/{{user.cl_number}}">Számlák</a>
+          <app-delete-user *ngIf="user.cl_status==true" [clnumber]=user.id></app-delete-user>
+          <a class="btn btn-outline-warning" href="/client-accounts/{{user.id}}">Rendelések</a>
        
         
         </td>

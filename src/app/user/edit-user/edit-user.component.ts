@@ -47,7 +47,7 @@ export class EditUserComponent implements OnInit {
 
     this.userForm.setValue(this.user);
     this.modalService.open(content);
-    console.log("edit: "+this.user.cl_name);
+    console.log("edit: "+this.user.id);
       }
 
       async updateUser() {
