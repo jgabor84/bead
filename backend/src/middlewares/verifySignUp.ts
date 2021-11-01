@@ -16,7 +16,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
           return;
     }
         user = await userRepository.findOneOrFail({ where: { cl_address: req.body.email } });
-    if(user.cl_address){
+    if(user.id){
         res.status(400).send({
             message: "Létező e-mailcím!"
           });

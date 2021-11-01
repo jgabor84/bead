@@ -39,7 +39,7 @@ export class CartItem {
 	updatedAt: Date | null;
 
 	@ManyToOne(type => Cart, {
-		
+		eager: true
         
     }) cart: Cart;
 	

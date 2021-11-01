@@ -1,0 +1,59 @@
+
+<div class="container">
+  <div class="d-flex flex-nowrap mb-2 px-2 py-3 filter-container">
+    <div>
+  <a class="filter red" (click)="search('vörös')" role="button"> </a>
+  <a class="filter white" (click)="search('fehér')" role="button"> </a>
+  <a class="filter rose" (click)="search('rozé')" role="button"> </a>
+</div>
+<div>
+  <a class="btn btn-outline-light mx-2" (click)="search('száraz')" role="button">Száraz</a>
+  <a class="btn btn-outline-light mx-2" (click)="search('félszáraz')" role="button">Félszáraz</a>
+  <a class="btn btn-outline-light mx-2" (click)="search('félédes')" role="button">Félédes</a>
+  <a class="btn btn-outline-light mx-2" (click)="search('édes')" role="button">Édes</a>
+</div>
+</div>
+    <div class="d-flex flex-nowrap">
+        
+           
+    <div class="card text-center w-25 p-1 ml-1 mr-1 mt-1 mb-1" *ngFor="let wine of filterWines">
+      <div *ngIf="wine.discount>0" class="discount">{{wine.discount}}%</div>
+      <div class="img-bg">
+        <img class="thumbnail" src="http://localhost:3000/{{wine.imgs}}" >
+      </div>
+        
+        <div class="card-body">
+          <p class="price">{{wine.price}} Ft</p>
+          <p class="onstock" *ngIf="wine.quantity>0; else nostock"><i class="bi bi-check2-circle"></i> Raktáron</p>
+          <ng-template #nostock>
+            <p class="nostock"><i class="bi bi-exclamation-circle"></i> Rendelésre</p>
+          </ng-template>
+
+          <div class="row g-0">
+            <div class="col-md-9 text-left">
+              
+              <p class="wine name my-1">{{wine.name}}</p>
+              <p class="wine my-1">{{wine.winery}}</p>
+              <p class="wine my-1">{{wine.year}}</p>
+            </div>
+            <div class="col-md-3">
+
+              <div class="my-2"><a class="btn addcart" (click)="addToCart(wine)" role="button"><i class="bi bi-basket"></i></a></div>
+              <div class="my-2"><a class="btn addcart" [routerLink]="['/wine', wine.id]"><i class="bi bi-box-arrow-up-right"></i></a></div>
+            </div>
+          </div>
+
+
+
+
+   
+           <!-- <p>{{avgRating.avg}}</p>-->
+            
+    
+        </div>
+      </div>
+    
+    </div>
+    
+    </div>
+    

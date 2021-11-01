@@ -6,8 +6,8 @@ import { TokenStorageService } from '../services/token-storage.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-//const TOKEN_HEADER_KEY = 'Authorization';       // for Spring Boot back-end
- const TOKEN_HEADER_KEY = 'x-access-token';   // for Node.js Express back-end
+// backend checkJwt.ts middleware ezt az értéket keresi
+const TOKEN_HEADER_KEY = 'x-access-token'; 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -17,10 +17,8 @@ export class AuthInterceptor implements HttpInterceptor {
     let authReq = req;
     const token = this.token.getToken();
     if (token != null) {
-      // for Spring Boot back-end
-      //authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
-
-      // for Node.js Express back-end
+      
+      // beállítjuk az új request header-t
        authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, token) });
     }
     return next.handle(authReq).pipe(

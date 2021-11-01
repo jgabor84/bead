@@ -18,7 +18,7 @@ export class CartController extends Controller {
             const entity = this.repository.create(req.body);
             const entityAdded = await this.repository.save(entity);
 
-            res.json(entityAdded);
+            res.json(entityAdded); /// itt megnézni miért Cart[]
           console.log("ccc "+Object(entityAdded)["id"]);
       
     }
@@ -33,7 +33,7 @@ export class CartController extends Controller {
         try {
             const id = req.params.id;
             const entities = await this.repository
-          .find({where:[
+          .findOne({where:[
             {user:id,
             status:true}
         ]}
@@ -45,6 +45,26 @@ export class CartController extends Controller {
             this.handleError(res);
         }
     };
+
+    update = async (req, res) => {
+        
+        const id = req.body.cart.id;
+        
+    
+        try {
+            await getConnection()
+            .createQueryBuilder()
+            .update(Cart)
+            .set({ status: false})
+            .where("id = :id", { id: id })
+            .execute();
+        
+            res.json({ success: true });
+        } catch (err) {
+            console.error(err);
+            this.handleError(res);
+        }
+    }
 
     
 

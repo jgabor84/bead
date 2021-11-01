@@ -13,7 +13,7 @@ export class WineController extends Controller {
  
           const entities = await this.repository
           .find({where:[
-            {landing:true,
+            {
             shop:true}
         ]}
          );

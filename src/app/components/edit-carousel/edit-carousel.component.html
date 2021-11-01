@@ -1,0 +1,17 @@
+
+<div class="container">
+    <div class="row mt-2 justify-content-center"  [dragula]="'bag'" [(dragulaModel)]="carousel">
+<div class="col-md-3"  *ngFor="let item of carousel;  let bagIndex = index " > 
+    <div  class="card card-container py-3 px-3">
+        <img  src="http://localhost:3000/{{item.img}}" >
+        
+        <input type="text"  [(ngModel)]="item.text" />
+        <input type="text"  [(ngModel)]="item.link" />
+        <label>Aktív</label>
+        <input value="{{item.active}}" type="checkbox" [checked]="item.active">
+        <p>Új pozíció: {{bagIndex+1}}</p>
+        <p>Eredeti pozíció: {{item.position}}</p>
+        <button class="btn actionbtn btn-block" (click) = "saveItem(item.id, bagIndex, item.text, item.img, item.link, item.active)">Mentés</button>
+    </div>
+</div>
+</div>

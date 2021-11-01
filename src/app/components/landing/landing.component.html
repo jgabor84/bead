@@ -1,0 +1,64 @@
+
+<div class="container">
+<div class="row pt-5">
+  <div class="col-8">
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let item of carousel">
+        <div class="picsum-img-wrapper">
+          <img src="http://localhost:3000/{{item.img}}" >
+          <p>{{item.text}}</p>
+        </div>
+        <div class="carousel-caption">
+          
+          
+        </div>
+      </ng-template>
+      
+    </ngb-carousel>
+  </div>
+
+  <div class="col-4">
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-6">
+    <img class="thumbnail img-fluid" src="http://localhost:3000/{{wineImg}}" >
+  
+      </div>
+      <div class="col-md-6">
+        <div class="card-body">
+          <h5 class="card-title">{{topRate}}</h5>
+          <p class="card-text">
+            {{wineName}}, {{wineYear}}, {{wineWinery}}
+          </p>
+          <p class="card-text">
+            <strong class="text-muted">{{winePrice}} Ft</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+</div>
+
+
+</div>
+<div class="container">
+  <h1 class="text-center my-5">Keressen boraink között</h1>
+  <div class="row g-0">
+      <div class="col-md-6 mx-auto">
+        <app-find-wine></app-find-wine>
+        </div>
+        </div>
+  
+  <h1 class="text-center my-5">Kínálatunk</h1>
+</div>
+
+<app-list-wine></app-list-wine>
+<div class="container">
+  <h1 class="text-center my-5">Elérhetség</h1>
+  <div class="gmap">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d21553.973487985008!2d19.08357365!3d47.524060150000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1shu!2shu!4v1634417830336!5m2!1shu!2shu" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</div>
+

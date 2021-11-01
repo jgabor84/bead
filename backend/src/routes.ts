@@ -11,6 +11,7 @@ import { ReviewController } from './controller/review.controller';
 import { CarouselController } from './controller/carousel.controller';
 import { CartController } from './controller/cart.controller';
 import { CartItemController } from './controller/cartItem.controller';
+import { OrderController } from './controller/order.controller';
 
 export function getRouter(): Router {
 
@@ -46,6 +47,7 @@ let upload = multer({
     const carouselController = new CarouselController();
     const cartController = new CartController();
     const cartItemController = new CartItemController();
+    const orderController = new OrderController();
 
     
 
@@ -112,6 +114,10 @@ let upload = multer({
   //get cart
   router.get("/carts/:id",  cartController.getCart);
 
+  //save order
+  router.post("/save-order", [mail],  orderController.create);
+  router.get("/orders/:id",  orderController.getOrder);
+  router.get("/orders/",  orderController.getAll);
     
 
   //Edit one user

@@ -1,0 +1,42 @@
+<div class="container">
+    
+    <table class="table table-light table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Név</th>
+                <th>Felhasználónév</th>
+                <th>Rendelés dátuma</th>
+                <th>Státusz</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of order">
+                <td>{{item.id}}</td>
+                <td>{{item.invoice_firstName}} {{item.invoice_middleName}} {{item.invoice_lastName}}</td>
+                <td>{{item.user.username}}</td>
+                <td>{{item.createdAt}}</td>
+                <td>{{item.status}}</td>
+                <td><button class="btn btn-primarys" (click) = "getCartItems(item.cart.id, content)"><i class="bi bi-search"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Rendelés részletek</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="d-flex flex-row" *ngFor="let cItem of cartItem">
+            <img class="thumbnail" src="http://localhost:3000/{{cItem.wine.imgs}}" ><p>{{cItem.sku}} | {{cItem.price}} | {{cItem.wine.name}}</p>
+        
+    </div>
+
+    </div>
+    
+  </ng-template>
+</div>

@@ -1,0 +1,61 @@
+.color-radio{
+    visibility:hidden;
+}
+.color-text{
+  height:100%;
+  width:100%;
+  position: absolute;
+  top:0;
+}
+.review-btn input[type=radio]{
+    display: none;
+}
+.review-btn input[type=radio]:checked + .box {
+  color:#fff;
+  background-color: #238da5;
+  }
+
+  .review-btn input[type=radio]:checked{
+    background-color: #238da5;
+  }
+
+  .review-btn:hover{
+     background-color: #238da5;
+     color:#fff;
+  }
+  .review-btn .box{
+    transition: all 250ms ease;
+    width: 100px;
+    height: 50px;
+    }
+    .review-btn .box span{
+      top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 15px;
+    }
+  .review-btn  {
+    width: 100px;
+    height: 50px;
+    background-color: #fff;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 6px;
+    margin: 10px;
+    transition: all 250ms ease;
+    will-change: transition;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+   
+  }
+  .review-btn .box:active {
+    color:#fff;
+    background-color: #238da5;
+  }
+  .review-btn .box:active span {
+    color:#fff;
+   
+  }

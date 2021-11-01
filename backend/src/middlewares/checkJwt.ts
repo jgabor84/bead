@@ -7,17 +7,17 @@ export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   
   const token = req.body.token || req.query.token || req.headers["x-access-token"];
   let jwtPayload;
-  console.log("sdfsdfsd"+token);
+  
   //Try to validate the token and get data
   try {
     jwtPayload = <any>jwt.verify(token, config.jwtSecret);
     res.locals.jwtPayload = jwtPayload;
-    console.log("payload: "+jwtPayload);
+    
     
   } catch (error) {
     //If token is not valid, respond with 401 (unauthorized)
     res.status(401).send({
-      message: "Unauthorized!"+token
+      message: "Unauthorized!"
     });
     return;
   }

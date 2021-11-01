@@ -34,6 +34,7 @@
       <div ngbDropdownMenu aria-labelledby="dropdownUser">
         <button routerLink="/edit-profile/{{userId}}" ngbDropdownItem>Saját adatok</button>
         <button ngbDropdownItem>Rendelések</button>
+        <button ngbDropdownItem (click)="logout()">Kijelentkezés</button>
         
       </div>
     </div>

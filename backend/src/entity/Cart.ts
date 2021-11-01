@@ -26,7 +26,7 @@ export class Cart {
 	@Column()
 	updatedAt: Date | null;
 
-	@ManyToOne(type => User)	user: User;
+	@ManyToOne(type => User, {eager: true})	user: User;
 
 	@OneToMany(type => CartItem, cartItem => cartItem.cart)	cartItem: CartItem[];
 

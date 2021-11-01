@@ -1,5 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { GuardService } from './services/guard.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,14 @@ import { GuardService } from './services/guard.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Banki ügyintézés';
+  title = 'Winez webshop';
   cartIsOpen=false;
   isLoggedIn=false;
   userId = 0;
   username = '';
   roles = [];
 
-  constructor(private auth: GuardService) {}
+  constructor(private auth: GuardService, private authService: AuthService ) {}
 
   ngOnInit(): void {
    if(this.auth.isLoggedIn()){this.isLoggedIn = true;}
@@ -25,7 +26,14 @@ export class AppComponent implements OnInit {
   window.addEventListener("beforeunload", () => localStorage.removeItem('items'));
   }
  
+  async logout() {
 
+    this.authService.logout();
+    this.reloadPage();
+  }
+  reloadPage(): void {
+    window.location.reload();
+  }
 
   openCart(){
     this.cartIsOpen == false ? this.cartIsOpen = true :this.cartIsOpen = false;

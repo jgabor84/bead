@@ -1,0 +1,249 @@
+<div class="container">
+  <div class="row mt-2 justify-content-center">
+<div class="col-md-8" *ngIf="isLoggedIn">
+    <div class="card card-container">
+      <div class="alert alert-success" >
+        {{username}}
+        {{uid}}
+      </div>
+      
+      <form name="form" #f="ngForm" [formGroup]="reviewForm" (ngSubmit)="onSubmit()" novalidate>
+        <p>Szín</p>
+       
+<h3>Szín</h3>
+
+<div class="d-flex flex-row flex-wrap">
+      <div class="mx-2 my-2" *ngFor="let item of redColors; let i = index;">
+       
+        <label [ngStyle]="{'display':'block', 'position':'relative','width':'80px','height':'80px','background':item.hex}"  for="radio{{i}}">
+        <input  type="radio"
+        class="color-radio"
+          formControlName="color"
+          id="radio{{i}}"
+          name="color"
+          [value]=item.hex>
+        
+          <div class="text-center color-text"><p>{{item.tone || '?'}} <br>{{item.color || '?'}}</p></div>
+        </label>
+      </div>
+    </div>
+
+      <label>Szín szöveges megjegyzés</label>
+        <input type="text" class="form-control" formControlName="color_comment"  required  />
+        
+      
+    <h3>Illat</h3>  
+      <label>Intenzitás</label>  
+        <input type="range" min="1" max="5" formControlName="intensity" value="0" >
+        
+        <p>Karakter</p>
+        <div>
+        <label class="review-btn" ><input type="radio" id="nose_character" formControlName="nose_character" value="Gyümölcs"><div class="box"><span>Gyümölcs</span></div></label>
+        <label class="review-btn" ><input type="radio" id="nose_character" formControlName="nose_character" value="Fűszer"><div class="box"><span>Fűszer</span></div></label>
+        <label class="review-btn" ><input type="radio" id="nose_character" formControlName="nose_character" value="Fás/Hordós"><div class="box"><span>Fás/Hordós</span></div></label>
+        <label class="review-btn" ><input type="radio" id="nose_character" formControlName="nose_character" value="Virág"><div class="box"><span>Virág</span></div></label>
+        <label class="review-btn" ><input type="radio" id="nose_character" formControlName="nose_character" value="Vegetális"><div class="box"><span>Vegetális</span></div></label>
+        <label class="review-btn" ><input type="radio" id="nose_character" formControlName="nose_character" value="Egyéb"><div class="box"><span>Egyéb</span></div></label>
+
+      <!--  <label for="name">Fűszer</label><input type="radio" formControlName="nose_character" value="Fűszer">
+        <label for="name">Fás/Hordós</label><input type="radio" formControlName="nose_character" value="Fás/Hordós">
+        <label for="name">Virág</label><input type="radio" formControlName="nose_character" value="Virág">
+        <label for="name">Vegetális</label> <input type="radio" formControlName="nose_character" value="Vegetális">
+        <label for="name">Egyéb</label><input type="radio" formControlName="nose_character" value="Egyéb">-->
+      </div>
+        <label>Illat szöveges megjegyzés</label>
+        <input type="text" class="form-control" formControlName="nose_comment"  required  />        
+<hr>
+<h3>Íz</h3>
+        <label>Édesség</label>  
+        
+        <div>
+          <label class="review-btn" ><input type="radio" id="sweetness" formControlName="sweetness" value="Száraz"><div class="box"><span>Száraz</span></div></label>
+          <label class="review-btn" ><input type="radio" id="sweetness" formControlName="sweetness" value="Félszáraz"><div class="box"><span>Félszáraz</span></div></label>
+          <label class="review-btn" ><input type="radio" id="sweetness" formControlName="sweetness" value="Félédes"><div class="box"><span>Félédes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="sweetness" formControlName="sweetness" value="Édes"><div class="box"><span>Édes</span></div></label>
+
+
+        <!--  <label for="name">Száraz</label><input type="radio" formControlName="sweetness" value="Száraz">
+          <label for="name">Félszáraz</label><input type="radio" formControlName="sweetness" value="Félszáraz">
+          <label for="name">Félédes</label><input type="radio" formControlName="sweetness" value="Félédes">
+          <label for="name">Édes</label><input type="radio" formControlName="sweetness" value="Édes">-->
+        </div>
+
+        <label>Sav</label>  
+        <div>
+          <label class="review-btn" ><input type="radio" id="acidity" formControlName="acidity" value="Alacsony"><div class="box"><span>Alacsony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="acidity" formControlName="acidity" value="Közepesen alacsony"><div class="box"><span>Közepesen alacsony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="acidity" formControlName="acidity" value="Közepes"><div class="box"><span>Közepes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="acidity" formControlName="acidity" value="Közepesen magas"><div class="box"><span>Közepesen magas</span></div></label>
+          <label class="review-btn" ><input type="radio" id="acidity" formControlName="acidity" value="Magas"><div class="box"><span>Magas</span></div></label>
+
+
+
+         <!-- <label for="name">Alacsony</label><input type="radio" formControlName="acidity" value="Alacsony">
+          <label for="name">Közepesen alacsony</label><input type="radio" formControlName="acidity" value="Közepesen alacsony">
+          <label for="name">Közepes</label><input type="radio" formControlName="acidity" value="Közepes">
+          <label for="name">Közepesen magas</label><input type="radio" formControlName="acidity" value="Közepesen magas">
+          <label for="name">Magas</label><input type="radio" formControlName="acidity" value="Magas">-->
+        </div>
+
+
+
+        <label>Alkoholtartalom</label>  
+        <div>
+          <label class="review-btn" ><input type="radio" id="alc_content" formControlName="alc_content" value="Alacsony"><div class="box"><span>Alacsony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="alc_content" formControlName="alc_content" value="Közepesen alacsony"><div class="box"><span>Közepesen alacsony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="alc_content" formControlName="alc_content" value="Közepes"><div class="box"><span>Közepes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="alc_content" formControlName="alc_content" value="Közepesen magas"><div class="box"><span>Közepesen magas</span></div></label>
+          <label class="review-btn" ><input type="radio" id="alc_content" formControlName="alc_content" value="Magas"><div class="box"><span>Magas</span></div></label>
+
+
+          <!--<label for="name">Alacsony</label><input type="radio" formControlName="alc_content" value="Alacsony">
+          <label for="name">Közepesen alacsony</label><input type="radio" formControlName="alc_content" value="Közepesen alacsony">
+          <label for="name">Közepes</label><input type="radio" formControlName="alc_content" value="Közepes">
+          <label for="name">Közepesen magas</label><input type="radio" formControlName="alc_content" value="Közepesen magas">
+          <label for="name">Magas</label><input type="radio" formControlName="alc_content" value="Magas">-->
+        </div>
+
+        <label>Tannin mennyiség</label>  
+        <div>
+          <label class="review-btn" ><input type="radio" id="tannin_quantity" formControlName="tannin_quantity" value="Alacsony"><div class="box"><span>Alacsony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quantity" formControlName="tannin_quantity" value="Közepesen alacsony"><div class="box"><span>Közepesen alacsony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quantity" formControlName="tannin_quantity" value="Közepes"><div class="box"><span>Közepes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quantity" formControlName="tannin_quantity" value="Közepesen magas"><div class="box"><span>Közepesen magas</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quantity" formControlName="tannin_quantity" value="Magas"><div class="box"><span>Magas</span></div></label>
+
+
+          <!--<label for="name">Alacsony</label><input type="radio" formControlName="tannin_quantity" value="Alacsony">
+          <label for="name">Közepesen alacsony</label><input type="radio" formControlName="tannin_quantity" value="Közepesen alacsony">
+          <label for="name">Közepes</label><input type="radio" formControlName="tannin_quantity" value="Közepes">
+          <label for="name">Közepesen magas</label><input type="radio" formControlName="tannin_quantity" value="Közepesen magas">
+          <label for="name">Magas</label><input type="radio" formControlName="tannin_quantity" value="Magas">-->
+        </div>
+
+        <label>Tannin minőség</label>  
+        <div>
+          <label class="review-btn" ><input type="radio" id="tannin_quality" formControlName="tannin_quality" value="Éretlen"><div class="box"><span>Éretlen</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quality" formControlName="tannin_quality" value="Közepesen éretlen"><div class="box"><span>Közepesen éretlen</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quality" formControlName="tannin_quality" value="Közepes"><div class="box"><span>Közepes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quality" formControlName="tannin_quality" value="Közepesen érett"><div class="box"><span>Közepesen érett</span></div></label>
+          <label class="review-btn" ><input type="radio" id="tannin_quality" formControlName="tannin_quality" value="Érett"><div class="box"><span>Érett</span></div></label>
+
+
+
+          <!--<label for="name">Éretlen</label><input type="radio" formControlName="tannin_quality" value="Éretlen">
+          <label for="name">Közepesen éretlen</label><input type="radio" formControlName="tannin_quality" value="Közepesen éretlen">
+          <label for="name">Közepes</label><input type="radio" formControlName="tannin_quality" value="Közepes">
+          <label for="name">Közepesen érett</label><input type="radio" formControlName="tannin_quality" value="Közepesen érett">
+          <label for="name">Érett</label><input type="radio" formControlName="tannin_quality" value="Érett">-->
+        </div>
+
+        <label>Testesség</label>  
+        <div>
+          <label class="review-btn" ><input type="radio" id="body" formControlName="body" value="Vékony"><div class="box"><span>Vékony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="body" formControlName="body" value="Közepesen vékony"><div class="box"><span>Közepesen vékony</span></div></label>
+          <label class="review-btn" ><input type="radio" id="body" formControlName="body" value="Közepes"><div class="box"><span>Közepes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="body" formControlName="body" value="Közepesen testes"><div class="box"><span>Közepesen testes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="body" formControlName="body" value="Testes"><div class="box"><span>Testes</span></div></label>
+
+
+
+          <!--<label for="name">Vékony</label><input type="radio" formControlName="body" value="Vékony">
+          <label for="name">Közepesen vékony</label><input type="radio" formControlName="body" value="Közepesen vékony">
+          <label for="name">Közepes</label><input type="radio" formControlName="body" value="Közepes">
+          <label for="name">Közepesen testes</label><input type="radio" formControlName="body" value="Közepesen testes">
+          <label for="name">Testes</label><input type="radio" formControlName="body" value="Testes">-->
+        </div>
+
+        <label>Lecsengés</label>  
+        <div>
+          <label class="review-btn" ><input type="radio" id="length" formControlName="length" value="Rövid"><div class="box"><span>Rövid</span></div></label>
+          <label class="review-btn" ><input type="radio" id="length" formControlName="length" value="Közepesen rövid"><div class="box"><span>Közepesen rövid</span></div></label>
+          <label class="review-btn" ><input type="radio" id="length" formControlName="length" value="Közepes"><div class="box"><span>Közepes</span></div></label>
+          <label class="review-btn" ><input type="radio" id="length" formControlName="length" value="Közepesen hosszú"><div class="box"><span>Közepesen hosszú</span></div></label>
+          <label class="review-btn" ><input type="radio" id="length" formControlName="length" value="Hosszú"><div class="box"><span>Hosszú</span></div></label>
+
+
+
+          <!--<label for="name">Rövid</label><input type="radio" formControlName="length" value="Rövid">
+          <label for="name">Közepesen rövid</label><input type="radio" formControlName="length" value="Közepesen rövid">
+          <label for="name">Közepes</label><input type="radio" formControlName="length" value="Közepes">
+          <label for="name">Közepesen hosszú</label><input type="radio" formControlName="length" value="Közepesen hosszú">
+          <label for="name">Hosszú</label><input type="radio" formControlName="length" value="Hosszú">-->
+        </div>
+
+        
+
+        <p>Íz karakter</p>
+        <div>
+          <label class="review-btn" ><input type="radio" id="taste_character" formControlName="taste_character" value="Olajos magvak"><div class="box"><span>Olajos magvak</span></div></label>
+          <label class="review-btn" ><input type="radio" id="taste_character" formControlName="taste_character" value="Pörköléses aromák"><div class="box"><span>Pörköléses aromák</span></div></label>
+          <label class="review-btn" ><input type="radio" id="taste_character" formControlName="taste_character" value="Ásványosság/mineralitás"><div class="box"><span>Ásványosság/mineralitás</span></div></label>
+          <label class="review-btn" ><input type="radio" id="taste_character" formControlName="taste_character" value="Vegyszer/gyógyszer"><div class="box"><span>Vegyszer/gyógyszer</span></div></label>
+          <label class="review-btn" ><input type="radio" id="taste_character" formControlName="taste_character" value="Animalitás"><div class="box"><span>Animalitás</span></div></label>
+          <label class="review-btn" ><input type="radio" id="taste_character" formControlName="taste_character" value="Egyéb"><div class="box"><span>Egyéb</span></div></label>
+
+
+
+        <!--<label for="name">Gyümölcs</label><input type="radio" formControlName="taste_character" value="Olajos magvak">
+        <label for="name">Fűszer</label><input type="radio" formControlName="taste_character" value="Pörköléses aromák">
+        <label for="name">Fás/Hordós</label><input type="radio" formControlName="taste_character" value="Ásványosság/mineralitás">
+        <label for="name">Virág</label><input type="radio" formControlName="taste_character" value="Vegyszer/gyógyszer">
+        <label for="name">Vegetális</label> <input type="radio" formControlName="taste_character" value="Animalitás">
+        <label for="name">Egyéb</label><input type="radio" formControlName="taste_character" value="Egyéb">-->
+      </div>
+
+      <label>Íz szöveges megjegyzés</label>
+        <input type="text" class="form-control" formControlName="taste_comment"  required  />    
+
+        <label>Pontszám</label>  
+        <input type="range" min="1" max="5" step ="0.5" formControlName="rating" value="0" >
+       <!--
+          <label for="color">color</label>
+          <input type="text" class="form-control" formControlName="color" [(ngModel)]="reviewForm.color" required  />
+
+          <label for="color_comment">color_comment</label>
+          <input type="text" class="form-control" formControlName="color_comment" [(ngModel)]="reviewForm.color_comment" required  />
+       
+
+       
+          color: null,
+          color_comment: null,
+          intensity: null,
+          nose_character: null,
+          nose_comment:null,
+          sweetness: null,
+          acidity: null,
+          alc_content: null,
+          tannin_quantity: null,
+          tannin_quality: null,
+          body: null,
+          taste_character: null,
+          length: null,
+          taste_comment: null,
+          rating: null,
+          published: null,       
+        
+        -->
+       
+          <button class="btn btn-primary btn-block">Értékelés mentése</button>
+          <button class="btn btn-primary btn-block" (click)="getSelecteditem()">radio</button>
+        
+  
+        <!--<div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>-->
+      </form>
+      <p>{{radioSelected}}</p>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Mentés sikeres!
+      </div>
+      <div class="alert alert-danger" *ngIf="isLoginFailed">
+        <p>Bejelentkezés szükséges!</p>
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>
+</div>

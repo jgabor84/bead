@@ -1,0 +1,63 @@
+img.thumbnail {
+    width: 6vw;
+    margin: auto;
+}
+.discount {
+    position: absolute;
+    right: 0;
+    padding: 15px;
+    background-color: #119000;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 50%;
+}
+p.onstock {
+    color: #119000;
+    font-weight: bold;
+    font-style: italic;
+}
+p.nostock {
+    color: #900000;
+    font-weight: bold;
+    font-style: italic;
+}
+p.price {
+    font-weight: bold;
+    font-size: 20px;
+}
+.filter-container{
+    background-color:#a06235b8;
+    border-radius: 1.25rem;
+}
+.filter {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    margin:auto 10px;
+    transition: 0.2s;
+}
+.filter.red:hover{
+    -webkit-box-shadow:inset 0px 0px 0px 10px rgb(95, 7, 7);
+    -moz-box-shadow:inset 0px 0px 0px 10px rgb(95, 7, 7);
+    box-shadow:inset 0px 0px 0px 10px rgb(95, 7, 7);
+}
+.filter.white:hover{
+    -webkit-box-shadow:inset 0px 0px 0px 10px rgb(92, 99, 1);
+    -moz-box-shadow:inset 0px 0px 0px 10px rgb(92, 99, 1);
+    box-shadow:inset 0px 0px 0px 10px rgb(92, 99, 1);
+}
+.filter.rose:hover{
+    -webkit-box-shadow:inset 0px 0px 0px 10px rgb(99, 1, 39);
+    -moz-box-shadow:inset 0px 0px 0px 10px rgb(99, 1, 39);
+    box-shadow:inset 0px 0px 0px 10px rgb(99, 1, 39);
+}
+.filter.red{
+    background-color: #900000;
+}
+.filter.white{
+    background-color: #b9fc00;
+}
+.filter.rose{
+    background-color: #fc0069;
+}

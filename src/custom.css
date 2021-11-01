@@ -1,0 +1,27 @@
+body{
+    background-color: #141313;
+    background-image: url("/assets/imgs/main-bg.jpg");
+    font-family: Helvetica, sans-serif;
+    color:#efefef;
+
+}
+h1{
+    font-family: Arial Narrow,Arial,sans-serif; 
+    color:#f3a446;
+}
+.card{
+    background-color: #504040b8;
+    transition:0.2s;
+    border-radius:1.25rem;
+}
+.card:hover{
+    background-color: #a06235b8;
+}
+   
+.addcart, .actionbtn{
+    background-color:#f3a446;
+}
+.wine.name{
+    font-family: Arial Narrow,Arial,sans-serif; 
+    font-size:24px;
+}

@@ -1,0 +1,90 @@
+<div class="container my-5">
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{ errorMessage }}
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+        {{ successMessage }}
+    </div>
+    
+<div class="row">
+
+    
+    <div class="col-md-6">
+        <h2>Kosár</h2>
+        <div class="order-cart" *ngIf="cart; else noCart">
+        
+    <div class="cart-row d-flex flex-row" *ngFor="let list of cartProducts;index as i">
+      <div class="cart-img mx-2 my-2">
+        <img style="height:100px;" src="http://localhost:3000/{{list.wine.imgs}}" >
+      </div>
+      <div class="cart-body mx-2 my-2">
+        <p>{{list.wine.name}}</p>
+        <p><strong>{{list.price}} Ft</strong></p>
+      </div>
+
+    </div>
+    <div class="d-flex flex-row">
+      <div style="width:150px;"></div>
+
+      <div class="mx-2 my-2"><p><strong>{{totalQuantity}} Darab</strong></p><p><strong>Összesen: {{totalPrice | currency: 'Ft' }}</strong></p></div>
+ 
+    </div>
+</div>
+<ng-template #noCart>
+    <h3>Nincs aktív kosara</h3>
+</ng-template>
+
+    
+  </div>
+
+
+
+  <div class="col-md-6">
+    <h2>Számlázási adatok</h2>
+    <form [formGroup]="userForm">
+        <div class="d-flex flex-row">
+            <div class="mx-2 my-2">
+                <label for="firstname">Vezetéknév</label>
+                <input type="text" class="form-control" id="invoice_firstname" formControlName="invoice_firstName">
+            </div>
+            <div class="mx-2 my-2">
+                <label for="middlename">Középs név</label>
+        <input type="text" class="form-control" id="invoice_middlename" formControlName="invoice_middleName">
+            </div>
+            <div class="mx-2 my-2">
+                <label for="lastname">Keresztnév</label>
+        <input type="text" class="form-control" id="invoice_lastname" formControlName="invoice_lastName">
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="mx-2 my-2">
+                <label for="tel">Telefon</label>
+                <input type="text" class="form-control" id="invoice_tel" formControlName="invoice_tel">
+            </div>
+    
+            <div class="mx-2 my-2">
+                <label for="postcode">Irányítószám</label>
+        <input type="text" class="form-control" id="invoice_postcode" formControlName="invoice_postcode">
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="mx-2 my-2">
+                <label for="city">Város</label>
+                <input type="text" class="form-control" id="invoice_city" formControlName="invoice_city">
+            
+            </div>
+    
+            <div class="mx-2 my-2">
+                <label for="address">Cím</label>
+        <input type="text" class="form-control" id="invoice_address" formControlName="invoice_address">
+            </div>
+        </div>
+        <button class="btn btn-primary mt-2" (click)="saveOrder()"><i class="bi bi-bag-check"></i></button>
+    </form>
+    
+  </div>
+
+</div>
+
+  
+</div>
